@@ -36,6 +36,7 @@ public class LevelTracker : MonoBehaviour
 
         if (levelFailed) //Reload this level
         {
+            print("Level failed");
             targetsReached = 0;
             levelFailed = false;
             StartCoroutine(StartLevel());

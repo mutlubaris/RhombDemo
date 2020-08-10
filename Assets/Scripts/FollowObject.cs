@@ -6,7 +6,7 @@ public class FollowObject : MonoBehaviour
     
     private void Update() 
     {
-        //Start following the Object if got to this Turn point
+        //Start following the Object when it reaches this Turn point
         
         if (transform.position == transform.parent.GetChild(0).transform.position)
             followingObject = true;

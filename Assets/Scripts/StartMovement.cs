@@ -51,7 +51,6 @@ public class StartMovement : MonoBehaviour
             canMove = false;
 
             FindObjectOfType<LevelTracker>().levelFailed = true;
-            print("Level failed");
         }
 
         //Tell the obstacle to stop the object on contact
