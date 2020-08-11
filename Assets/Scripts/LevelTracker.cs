@@ -4,7 +4,7 @@ using UnityEngine;
 public class LevelTracker : MonoBehaviour
 {
     [SerializeField] float levelChangeDelay = 2f;
-    [SerializeField] private GameObject[] levelPrefabs;
+    [SerializeField] GameObject[] levelPrefabs;
     
     private int levelIndex;
     private bool youWon;
