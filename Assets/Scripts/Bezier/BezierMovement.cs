@@ -5,10 +5,17 @@ public class BezierMovement : MonoBehaviour
     [SerializeField] float moveSpeed = 2f;
     [SerializeField] LineRenderer lineRenderer;
 
+    private Vector3[] route;
     private Vector3 nextPosition;
     private int waypointIndex = 0;
     private bool canMove = false;
     private bool routeComplete = false;
+
+    private void Start() 
+    {
+        route = new Vector3[lineRenderer.positionCount];
+        lineRenderer.GetPositions(route);
+    }
 
     private void OnMouseDown()
     {
@@ -23,16 +30,13 @@ public class BezierMovement : MonoBehaviour
 
     private void Move()
     {
-        //Determine the next position and start moving towards it
-
-        // nextPosition = transform.parent.GetChild(waypointIndex).transform.position;
-        nextPosition = lineRenderer.GetPosition(waypointIndex);
+        nextPosition = route[waypointIndex]; //Determine the next position and start moving towards it
 
         transform.position = Vector3.MoveTowards(transform.position, nextPosition, moveSpeed * Time.deltaTime);
 
         if (transform.position == nextPosition && !routeComplete)
         {
-            if (waypointIndex != lineRenderer.positionCount - 1)
+            if (waypointIndex != route.Length - 1)
                 waypointIndex += 1; //Keep increasing the index until we reach the target
             else
             {
