@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class BezierMovement : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class BezierMovement : MonoBehaviour
     {
         route = new Vector3[lineRenderer.positionCount];
         lineRenderer.GetPositions(route);
+        Array.Reverse(route);
     }
 
     private void OnMouseDown()
